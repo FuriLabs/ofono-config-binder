@@ -4,17 +4,16 @@ set -e
 
 configure() {
 
-	# Divert ofono configuration
-	if ! [ -e "/usr/lib/ofono-config-ril-binder/ril_subscription.conf.orig" ]; then
-		dpkg-divert \
-			--rename \
-			--package ofono-config-ril-binder \
-			--divert "/usr/lib/ofono-config-ril-binder/ril_subscription.conf.orig" \
-			--add "/etc/ofono/ril_subscription.conf"
+        # Remove old diversion
+        if [ -e "/usr/lib/ofono-config-ril-binder/ril_subscription.conf.orig" ]; then
+                rm -f "/etc/ofono/ril_subscription.conf"
 
-		# Symlink ours
-		ln -s "/usr/lib/ofono-config-ril-binder/ril_subscription.conf.binder" "/etc/ofono/ril_subscription.conf"
-	fi
+                dpkg-divert \
+                        --rename \
+                        --package ofono-config-ril-binder \
+                        --divert "/usr/lib/ofono-config-ril-binder/ril_subscription.conf.orig" \
+                        --remove "/etc/ofono/ril_subscription.conf"
+        fi
 
 }
 

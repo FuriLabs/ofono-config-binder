@@ -1,0 +1,3 @@
+systemd/10-droidian-lxc-android.conf /etc/systemd/system/ofono.service.d/
+systemd/20-droidian-droid-wait.conf /etc/systemd/system/ofono.service.d/
+binder.conf /etc/ofono/

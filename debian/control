@@ -1,4 +1,4 @@
-Source: ofono-config-ril-binder
+Source: ofono-configs-binder
 Maintainer: Eugenio Paolantonio (g7) <me@medesimo.eu>
 Section: misc
 Priority: optional
@@ -7,31 +7,69 @@ Standards-Version: 4.5.0.3
 Vcs-Browser: https://github.com/droidian/ofono-config-ril-binder
 Vcs-Git: https://github.com/droidian/ofono-config-ril-binder.git
 
-Package: ofono-config-ril-binder
+Package: ofono-configs-binder-common
 Architecture: all
-Pre-Depends: ofono
-Depends: ${misc:Depends},
-         ofono-ril-binder-plugin
-Description: ofono configuration for devices using binder as transport
+Multi-Arch: foreign
+Depends: ${shlibs:Depends},
+         ${misc:Depends},
+         ofono-binder-plugin,
+Provides: ofono-configs-binder
+Conflicts: ofono-configs-binder
+Description: ofono configuration for devices using the binder plugin - common configurations
  This package contains the ofono configuration for devices using
- binder as transport.
+ the binder plugin.
+ .
+ This package contains common configurations to make the plugin work.
 
-Package: ofono-config-ril-binder-dual-sim
+Package: ofono-configs-binder-dual-sim
 Architecture: all
-Depends: ofono-config-ril-binder (= ${binary:Version})
-Conflicts: ofono-config-ril-binder-single-sim-sim2
-Description: ofono configuration for devices using binder as transport (dual sim addon)
+Multi-Arch: foreign
+Depends: ${shlibs:Depends},
+         ${misc:Depends},
+         ofono-configs-binder-common,
+Description: ofono configuration for devices using the binder plugin - dual sim
  This package contains the ofono configuration for devices using
- binder as transport.
+ the binder plugin.
  .
  This package adds support for dual sim devices.
 
-Package: ofono-config-ril-binder-single-sim-sim2
+Package: ofono-configs-binder-single-sim-sim2
 Architecture: all
-Depends: ofono-config-ril-binder (= ${binary:Version})
-Conflicts: ofono-config-ril-binder-dual-sim
-Description: ofono configuration for devices using binder as transport (dual sim addon, SIM2-only)
+Multi-Arch: foreign
+Depends: ${shlibs:Depends},
+         ${misc:Depends},
+         ofono-configs-binder-common,
+Description: ofono configuration for devices using the binder plugin - single sim on slot2
+ This package contains the ofono configuration for devices using
+ the binder plugin.
+ .
+ This package forces single sim on the second slot in dual sim devices.
+ You shouldn't really install this unless you have a compelling reason to do so.
+
+Package: ofono-config-ril-binder
+Architecture: all
+Pre-Depends: ofono
+Depends: ofono-configs-binder-common
+Description: ofono configuration for devices using binder as transport - transactional package
  This package contains the ofono configuration for devices using
  binder as transport.
  .
- This package adds support for dual sim devices, but forces only SIM2 to be used.
+ This is an empty transactional package.
+
+Package: ofono-config-ril-binder-dual-sim
+Architecture: all
+Depends: ofono-configs-binder-dual-sim
+Description: ofono configuration for devices using binder as transport (dual sim addon) - transactional package
+ This package contains the ofono configuration for devices using
+ binder as transport.
+ .
+ This is an empty transactional package.
+
+Package: ofono-config-ril-binder-single-sim-sim2
+Architecture: all
+Depends: ofono-configs-binder-single-sim-sim2
+Description: ofono configuration for devices using binder as transport (dual sim addon, SIM2-only) - transactional package
+ This package contains the ofono configuration for devices using
+ binder as transport.
+ .
+ This is an empty transactional package.

@@ -1,2 +1,0 @@
-ril_subscription.conf.binder /usr/lib/ofono-config-ril-binder/
-10-lxc-android.conf /etc/systemd/system/ofono.service.d/
