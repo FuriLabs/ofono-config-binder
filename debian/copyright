@@ -1,9 +1,10 @@
 Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
-Upstream-Name: ofono-config-ril-binder
-Source: https://github.com/droidian/ofono-config-ril-binder
+Upstream-Name: ofono-config-binder
+Source: https://github.com/furilabs/ofono-config-binder
 
 Files: debian/*
 Copyright: 2020 Eugenio "g7" Paolantonio <me@medesimo.eu>
+           2025 Bardia Moshiri <bardia@furilabs.com>
 License: BSD-3-clause
 
 License: BSD-3-clause
