@@ -1,0 +1,2 @@
+rm_conffile /etc/systemd/system/ofono.service.d/10-droidian-lxc-android.conf
+rm_conffile /etc/systemd/system/ofono.service.d/20-droidian-droid-wait.conf
